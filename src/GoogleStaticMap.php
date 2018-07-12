@@ -181,6 +181,11 @@ class GoogleStaticMap {
         return $this;
     }
 
+    /**
+     * Make url string.
+     *
+     * @return string
+     */
     public function make() {
         $url = "https://maps.googleapis.com/maps/api/staticmap?";
 
