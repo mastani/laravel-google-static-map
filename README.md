@@ -38,9 +38,7 @@ $url = $map->setCenter('Tehran')
            ->setFormat(Format::JPG)
            ->addMarker('Tehran', '1', 'red', Size::Small)
            ->addMarkerLatLng(35.6907488, 51.3919293, '1', 'red', Size::Small)
-           ->make();
-           
-// The url contain 
+           ->make(); // Return url contain map address.
 ```
 
 ## Function
