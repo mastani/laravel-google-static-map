@@ -27,17 +27,6 @@ Next up, the service provider must be registered:
 ];
 ```
 
-If you want to make use of the facade you must install it as well:
-
-```php
-// config/app.php
-
-'aliases' => [
-    ...
-    'GoogleStaticMap' => NMFCODES\GoogleStaticMap\GoogleStaticMapFacade::class,
-];
-```
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
