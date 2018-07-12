@@ -17,13 +17,12 @@
         }
     ],
     "require": {
-		"php": ">=7.1.0",
         "illuminate/contracts": "5.*",
         "illuminate/support": "5.*"
 	},
 	"autoload": {
         "psr-4": {
-            "lasselehtinen\\MyPackage\\": "src"
+            "mastani\\GoogleStaticMap\\": "src"
         }
     },
     "extra": {
