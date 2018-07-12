@@ -1,0 +1,39 @@
+{
+    "name": "mastani/laravel-google-static-map",
+    "description": "Laravel Google Static Map Generator",
+	"keywords": [
+        "google",
+        "static-maps",
+        "generator",
+        "laravel"
+    ],
+    "type": "library",
+	"homepage": "https://github.com/mastani/laravel-google-static-map",
+	"license": "MIT",
+    "authors": [
+        {
+            "name": "Amin Mastani",
+            "email": "amin.mastani@yahoo.com"
+        }
+    ],
+    "require": {
+		"php": ">=7.1.0",
+        "illuminate/contracts": "5.*",
+        "illuminate/support": "5.*"
+	},
+	"autoload": {
+        "psr-4": {
+            "lasselehtinen\\MyPackage\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "mastani\\GoogleStaticMap\\GoogleStaticMapServiceProvider"
+            ],
+            "aliases": {
+                "GoogleStaticMap": "mastani\\GoogleStaticMap\\GoogleStaticMapFacade"
+            }
+        }
+    }
+}
