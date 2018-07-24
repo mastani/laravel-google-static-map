@@ -5,6 +5,7 @@ namespace mastani\GoogleStaticMap;
 class GoogleStaticMap {
 
     private $apiKey;
+    private $apiSecret;
     private $center;
     private $zoom = 15;
     private $scale = '1';
@@ -21,6 +22,17 @@ class GoogleStaticMap {
      */
     public function __construct($apiKey = '') {
         $this->apiKey = $apiKey;
+        return $this;
+    }
+
+    /**
+     * Set signing secret key.
+     *
+     * @param string $apiSecret
+     * @return $this
+     */
+    public function setSecret($apiSecret) {
+        $this->apiSecret = $apiSecret;
         return $this;
     }
 
@@ -187,15 +199,18 @@ class GoogleStaticMap {
      * @return string
      */
     public function make() {
-        $url = "https://maps.googleapis.com/maps/api/staticmap?";
+        $baseUrl = "https://maps.googleapis.com";
+        $url = "/maps/api/staticmap?";
 
         if (empty($this->center)) return false;
 
         if (strlen($this->apiKey) > 0)
             $url .= 'key=' . $this->apiKey . '&';
         $url .= 'center=' . $this->center;
-        $url .= '&zoom=' . $this->zoom;
-        $url .= '&scale=' . $this->scale;
+        if ($this->zoom != 0)
+            $url .= '&zoom=' . $this->zoom;
+        if ($this->scale != 0)
+            $url .= '&scale=' . $this->scale;
         $url .= '&size=' . $this->size;
         $url .= '&maptype=' . $this->mapType;
         $url .= '&format=' . $this->format;
@@ -230,7 +245,23 @@ class GoogleStaticMap {
             $url .= '&markers=' . $decode;
         }
 
-        return $url;
+        if (count($this->apiSecret) > 0)
+            $url = $this->signUrl($url);
+
+        return $baseUrl . $url;
+    }
+
+    /**
+     * @see https://github.com/geocoder-php/Geocoder/blob/21e562a5ad595c6fee7a33ae90e0b42dc8866c23/src/Geocoder/Provider/GoogleMapsBusinessProvider.php#L82
+     */
+    protected function signUrl($url) {
+        // Decode the private key into its binary format
+        $decodedKey = base64_decode(str_replace(array('-', '_'), array('+', '/'), $this->apiSecret));
+        // Create a signature using the private key and the URL-encoded
+        // string using HMAC SHA1. This signature will be binary.
+        $signature = hash_hmac('sha1', $url, $decodedKey, true);
+        $encodedSignature = str_replace(array('+', '/'), array('-', '_'), base64_encode($signature));
+        return sprintf('%s&signature=%s', $url, $encodedSignature);
     }
 }
 

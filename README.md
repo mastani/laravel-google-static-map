@@ -45,6 +45,7 @@ $url = $map->setCenter('Tehran')
 
 | Function | Description |
 | :--- | :--- |
+| setSecret(secret) | Set signing secret key. |
 | setCenter(location) | Set map center with address. |
 | setCenterLatLng(latitude, longitude) | Set map center with latitude and longitude. |
 | setZoom(zoom) | Set map zoom. |
