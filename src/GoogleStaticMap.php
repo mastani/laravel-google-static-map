@@ -202,11 +202,10 @@ class GoogleStaticMap {
         $baseUrl = "https://maps.googleapis.com";
         $url = "/maps/api/staticmap?";
 
-        if (empty($this->center)) return false;
-
         if (strlen($this->apiKey) > 0)
             $url .= 'key=' . $this->apiKey . '&';
-        $url .= 'center=' . $this->center;
+        if ($this->center != null)
+            $url .= 'center=' . $this->center;
         if ($this->zoom != 0)
             $url .= '&zoom=' . $this->zoom;
         if ($this->scale != 0)
@@ -245,7 +244,7 @@ class GoogleStaticMap {
             $url .= '&markers=' . $decode;
         }
 
-        if (count($this->apiSecret) > 0)
+        if (isset($this->apiSecret) && strlen($this->apiSecret) > 0)
             $url = $this->signUrl($url);
 
         return $baseUrl . $url;
