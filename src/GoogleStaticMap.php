@@ -251,6 +251,24 @@ class GoogleStaticMap {
     }
 
     /**
+     * Download map image.
+     *
+     * @param string $path
+     * @param int $name_length
+     * @return string
+     */
+    public function download($path = '.' . DIRECTORY_SEPARATOR, $name_length = 10) {
+        $name = $this->generateRandomString($name_length) . '.' . $this->format;
+        $path = rtrim(realpath($path), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $name;
+
+        $url = $this->make();
+        $content = file_get_contents($url);
+        file_put_contents($path, $content);
+
+        return $path;
+    }
+
+    /**
      * @see https://github.com/geocoder-php/Geocoder/blob/21e562a5ad595c6fee7a33ae90e0b42dc8866c23/src/Geocoder/Provider/GoogleMapsBusinessProvider.php#L82
      */
     protected function signUrl($url) {
@@ -261,6 +279,19 @@ class GoogleStaticMap {
         $signature = hash_hmac('sha1', $url, $decodedKey, true);
         $encodedSignature = str_replace(array('+', '/'), array('-', '_'), base64_encode($signature));
         return sprintf('%s&signature=%s', $url, $encodedSignature);
+    }
+
+    /**
+     * @see https://stackoverflow.com/a/4356295/4487671
+     */
+    protected function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }
 
