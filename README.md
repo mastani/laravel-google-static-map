@@ -2,6 +2,11 @@
 
 Generate static map using Google Map API in Laravel.
 
+[![Total Downloads](https://poser.pugx.org/mastani/laravel-google-static-map/downloads)](https://packagist.org/packages/mastani/laravel-google-static-map)
+[![Latest Stable Version](https://poser.pugx.org/mastani/laravel-google-static-map/v/stable)](https://packagist.org/packages/mastani/laravel-google-static-map)
+[![Latest Unstable Version](https://poser.pugx.org/mastani/laravel-google-static-map/v/unstable)](https://packagist.org/packages/mastani/laravel-google-static-map)
+[![License](https://poser.pugx.org/mastani/laravel-google-static-map/license)](https://packagist.org/packages/mastani/laravel-google-static-map)
+
 ### Installation in Laravel 5.5 and up
 
 ```bash
@@ -27,6 +32,20 @@ Next up, the service provider must be registered:
 ];
 ```
 
+### Installation without Laravel
+
+Another way is install the component through [composer](https://getcomposer.org/download/).
+
+Either run
+```bash
+$ composer require mastani/laravel-google-static-map
+```
+or add
+```json
+"mastani/laravel-google-static-map": "dev-master"
+```
+to the require section of your composer.json.
+
 ## Usage
 
 ```php
@@ -39,6 +58,8 @@ $url = $map->setCenter('Tehran')
            ->addMarker('Tehran', '1', 'red', Size::Small)
            ->addMarkerLatLng(35.6907488, 51.3919293, '1', 'red', Size::Small)
            ->make(); // Return url contain map address.
+           // or
+           ->download($path); // Download map image
 ```
 
 ## Function
@@ -58,6 +79,7 @@ $url = $map->setCenter('Tehran')
 | addMarkerWithIcon(center, icon, shadow) | Add custom marker to map. |
 | addMarkerLatLngWithIcon(latitude, longitude, icon, shadow) | Add marker to map with latitude and longitude. |
 | make() | Make url string. |
+| download($path = 'current path', $name_length = 10) | Download map image in provided path. |
 
 ## License
 
