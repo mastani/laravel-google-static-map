@@ -28,7 +28,7 @@ Next up, the service provider must be registered:
 
 'providers' => [
     ...
-    mastani\GoogleStaticMap\GoogleStaticMapServiceProvider::class,
+    Mastani\GoogleStaticMap\GoogleStaticMapServiceProvider::class,
 ];
 ```
 

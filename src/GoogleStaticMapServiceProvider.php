@@ -1,17 +1,18 @@
 <?php
 
-namespace mastani\GoogleStaticMap;
+namespace Mastani\GoogleStaticMap;
 
 use Illuminate\Support\ServiceProvider;
 
-class GoogleStaticMapServiceProvider extends ServiceProvider {
+class GoogleStaticMapServiceProvider extends ServiceProvider
+{
     /**
      * Bootstrap the application services.
      *
      * @return void
      */
-    public function boot() {
-
+    public function boot()
+    {
     }
 
     /**
@@ -19,7 +20,8 @@ class GoogleStaticMapServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         $this->app->singleton(GoogleStaticMap::class, function () {
             return new GoogleStaticMap();
         });
