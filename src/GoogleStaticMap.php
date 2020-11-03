@@ -323,25 +323,3 @@ class GoogleStaticMap
         return $randomString;
     }
 }
-
-abstract class MapType
-{
-    const RoadMap = 'roadmap';
-    const Terrain = 'terrain';
-    const Satellite = 'satellite';
-    const Hybrid = 'hybrid';
-}
-
-abstract class Format
-{
-    const JPG = 'jpg';
-    const PNG = 'png';
-    const GIF = 'gif';
-}
-
-abstract class Size
-{
-    const Small = 'tiny';
-    const Medium = 'small';
-    const Large = 'mid';
-}
