@@ -22,16 +22,16 @@
 	},
 	"autoload": {
         "psr-4": {
-            "mastani\\GoogleStaticMap\\": "src"
+            "Mastani\\GoogleStaticMap\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "mastani\\GoogleStaticMap\\GoogleStaticMapServiceProvider"
+                "Mastani\\GoogleStaticMap\\GoogleStaticMapServiceProvider"
             ],
             "aliases": {
-                "GoogleStaticMap": "mastani\\GoogleStaticMap\\GoogleStaticMapFacade"
+                "GoogleStaticMap": "Mastani\\GoogleStaticMap\\GoogleStaticMapFacade"
             }
         }
     }

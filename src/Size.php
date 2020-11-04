@@ -1,6 +1,6 @@
 <?php
 
-namespace mastani\GoogleStaticMap;
+namespace Mastani\GoogleStaticMap;
 
 abstract class Size
 {
