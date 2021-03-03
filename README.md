@@ -49,14 +49,14 @@ to the require section of your composer.json.
 ## Usage
 
 ```php
-$map = new GoogleStaticMap('Place google map API key or leave it empty');
+$map = new \Mastani\GoogleStaticMap\GoogleStaticMap('Place google map API key or leave it empty');
 $url = $map->setCenter('Tehran')
-           ->setMapType(MapType::RoadMap)
+           ->setMapType(\Mastani\GoogleStaticMap\MapType::RoadMap)
            ->setZoom(14)
            ->setSize(600, 600)
-           ->setFormat(Format::JPG)
-           ->addMarker('Tehran', '1', 'red', Size::Small)
-           ->addMarkerLatLng(35.6907488, 51.3919293, '1', 'red', Size::Small)
+           ->setFormat(\Mastani\GoogleStaticMap\Format::JPG)
+           ->addMarker('Tehran', '1', 'red', \Mastani\GoogleStaticMap\Size::Small)
+           ->addMarkerLatLng(35.6907488, 51.3919293, '1', 'red', \Mastani\GoogleStaticMap\Size::Small)
            ->make(); // Return url contain map address.
            // or
            ->download($path); // Download map image
