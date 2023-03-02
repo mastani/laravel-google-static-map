@@ -272,7 +272,7 @@ class GoogleStaticMap
         $url .= '&size='.$this->size;
         $url .= '&maptype='.$this->mapType;
         if (!is_null($this->mapId)) {
-            $url .= '&mapid='.$this->mapId;
+            $url .= '&map_id='.$this->mapId;
         }
         $url .= '&format='.$this->format;
         $url .= '&visual_refresh=true';
