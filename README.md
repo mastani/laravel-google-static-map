@@ -73,6 +73,7 @@ $url = $map->setCenter('Tehran')
 | setScale(scale) | Set map scale. |
 | setSize(width, height) | Set map size. |
 | setMapType(type as MapType) | Set map type. |
+| setMapId(id) | Set a map ID previously created in Cloud Console.  |
 | setFormat(format as Format) | Set map format. |
 | addMarker(center, label, color, size) | Add marker to map. |
 | addMarkerLatLng(latitude, longitude, label, color, size) | Add marker to map with latitude and longitude. |

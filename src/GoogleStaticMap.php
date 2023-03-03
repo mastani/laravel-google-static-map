@@ -11,6 +11,7 @@ class GoogleStaticMap
     private $scale = '1';
     private $size = '600x300';
     private $mapType = MapType::RoadMap;
+    private $mapId = null;
     private $format = Format::JPG;
     private $markers = [];
 
@@ -124,6 +125,20 @@ class GoogleStaticMap
     public function setMapType($mapType)
     {
         $this->mapType = $mapType;
+
+        return $this;
+    }
+
+    /**
+     * Set map ID.
+     *
+     * @param string $mapId
+     *
+     * @return $this
+     */
+    public function setMapId($mapId)
+    {
+        $this->mapId = $mapId;
 
         return $this;
     }
@@ -256,6 +271,9 @@ class GoogleStaticMap
         }
         $url .= '&size='.$this->size;
         $url .= '&maptype='.$this->mapType;
+        if (!is_null($this->mapId)) {
+            $url .= '&map_id='.$this->mapId;
+        }
         $url .= '&format='.$this->format;
         $url .= '&visual_refresh=true';
 
